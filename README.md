@@ -121,11 +121,10 @@ Get the state in the remote workspace
 
 #### Implement Resource
 
-Create AWS resource object
+Create AWS resource object according to [these manifests](https://github.com/galaxy-devops/demo-devops-cloud-TAJ/tree/v1-terraform)
 
 ```bash
 $ terraform init
 $ terraform apply -auto-approve
-
 ```
 
