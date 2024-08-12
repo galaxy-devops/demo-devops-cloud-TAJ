@@ -1,0 +1,35 @@
+---
+- name: "Install Jenkins"
+  hosts: localhost
+  become: yes
+
+  tasks:
+  - name: "download apt key"
+    ansible.builtin.get_url:
+      dest: /usr/share/keyrings/jenkins-keyring.asc
+      url: https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+  - name: "Add jenkins repo to sources.list"
+    ansible.builtin.apt_repository:
+      repo: "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/"
+      state: present
+      filename: jenkins
+  - name: "Install requisite package"
+    ansible.builtin.apt:
+      name: "{{ item }}"
+      state: latest
+    loop:
+      - fontconfig
+      - openjdk-17-jre
+  - name: "Update all packages to their latest version"
+    ansible.builtin.apt:
+      name: "*"
+      state: latest    
+  - name: "Update apt cache and install jenkins"
+    ansible.builtin.apt:
+      name: jenkins
+      update_cache: yes
+  - name: "Ensure jenkins is started and enabled"
+    ansible.builtin.systemd:
+      name: jenkins
+      enabled: yes
+      state: started

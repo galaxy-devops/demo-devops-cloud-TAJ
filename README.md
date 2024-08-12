@@ -199,7 +199,7 @@ $ openssl pkcs8 -topk8 -inform PEM \
 
   - Open private key file of **`SSH`** protocol and paste the content in here
 
-     <img src="https://gitee.com/bingo4933/blogimage/raw/master/img/demo-devops-cloud-TAJ/v3-Devops-with-Jenkins/jenkinsCredentials-3.png" style="zoom:50%;" />
+      <img src="https://gitee.com/bingo4933/blogimage/raw/master/img/demo-devops-cloud-TAJ/v3-Devops-with-Jenkins/jenkinsCredentials-3.png" style="zoom:50%;" />
 
 #### Jenkins pipeline
 
